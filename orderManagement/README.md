@@ -10,15 +10,15 @@ npm install
 
 ### 2. Watch files/ run application from development folder i.e. /src
 ```bash
-gulp
+npm start
 ```
 
 ### 3. Build production version
 ```bash
-gulp build
+npm run build
 ```
 
 ### 4. Start webserver from build folder
 ```bash
-gulp serve-build
+npm run serve-build
 ```
