@@ -1,0 +1,125 @@
+<form name="orderForm" novalidate autocomplete="off" class="container">
+
+<div class="row pagehead" style="margin-bottom: 7px;">
+  <div class="col-10"><h2><span class="gradient">Order Details</span></h2></div>
+</div>
+
+<hr style="margin: 5px 0px 16px 0px;">
+<div  style="padding:12px 25px;">
+  <div ui-view>
+  </div>
+</div>
+</form>
+
+<script type="text/ng-template" id="editOrderDetails.html">
+    <form name="orderDetailsPopup" >
+        <div class="modal-header">
+            <h3 class="modal-title">Edit Order Details</h3>
+            <span style="cursor: pointer" ng-click="orderDetailModalcancel()">x</span>
+        </div>
+        
+        <div class="modal-body">
+          <div class="col-12" style="margin-bottom: 15px;display: inline-flex;">
+            <div class="col-3 ">Order Number: </div>
+              <div class="col-9">
+                <input class=" form-control " type="number" name="orderNumber" ng-model="newOrder.orderNumber" placeholder="Enter Order Number" ng-pattern="/(^[1-9][0-9]{0,9}$)/" ng-change = "validateOrderNumber(newOrder.orderNumber)" autocomplete="off" required>
+                <div  style="color: #fe2627 !important; margin-top: 10px; padding: 0px" ng-show="orderDetailsPopup.orderNumber.$invalid && orderDetailsPopup.orderNumber.$dirty">Order Number can only be Numeric upto 10 characters and should not start with 0. 
+                </div>
+                <div  style="color: #fe2627 !important; margin-top: 10px; padding: 0px" ng-show="(foundOrderNumber != -1 && editIndex != foundOrderNumber)&& orderDetailsPopup.orderNumber.$dirty">Order Number already exists. 
+                </div>
+              </div>
+          </div>
+
+          <div class="col-12" style="margin-bottom: 15px;display: inline-flex;">
+            <div class="col-3 ">Order Due Date: </div>
+              <div class="col-9">
+                <input class="form-control" id="expirydate" type="date" name="orderDueDate" ng-model="newOrder.orderDueDate" ng-change = "timeStampValidation(newOrder.orderDueDate)" required/>
+                <div  style="color: #fe2627 !important; margin-top: 10px; padding: 0px" ng-show="(orderDetailsPopup.orderDueDate.$error.required && orderDetailsPopup.orderDueDate.$touched)">Order Due Date is Mandatory. 
+                </div>
+                <div  style="color: #fe2627 !important; margin-top: 10px; padding: 0px" ng-show="invalidTimeStamp">Order Due Date is invalid. 
+                </div>
+              </div>
+          </div>  
+          <div class="col-12" style="margin-bottom: 15px;display: inline-flex;">
+            <div class="col-3 ">Name: </div>
+              <div class="col-9">
+                <input class=" form-control " type="text" name="customerName" ng-model="newOrder.buyerName" placeholder="Enter Customer Name" ng-pattern="/(^[A-Z a-z]*$)/"  autocomplete="off" required>
+                <div  style="color: #fe2627 !important; margin-top: 10px; padding: 0px" ng-show="orderDetailsPopup.customerName.$invalid && orderDetailsPopup.customerName.$dirty">Customer Name is mandatory and can only contain alphabets. 
+                </div>
+              </div>
+          </div>   
+          <div class="col-12" style="margin-bottom: 15px;display: inline-flex;">
+            <div class="col-3 ">Address: </div>
+              <div class="col-9">
+                <textarea class=" form-control " row= '5' name="address" ng-model="newOrder.customerAddress" placeholder="Enter Address" ng-pattern="/(^[^#@<>;]*$)/"  autocomplete="off" required> </textarea>
+
+                <div  style="color: #fe2627 !important; margin-top: 10px; padding: 0px" ng-show="orderDetailsPopup.address.$invalid && orderDetailsPopup.address.$dirty">Address is mandatory and it Cannot contain symbols #,@, <,; and >. 
+                </div>
+              </div>
+          </div>  
+          <div class="col-12" style="margin-bottom: 15px;display: inline-flex;">
+            <div class="col-3 ">Phone: </div>
+              <div class="col-9">
+                <input class=" form-control " type="text" name="phone" ng-model="newOrder.customerPhone" placeholder="Enter Phone number" ng-pattern="/(^[1-9][0-9]{9}$)/"  autocomplete="off" required>
+                <div  style="color: #fe2627 !important; margin-top: 10px; padding: 0px" ng-show="orderDetailsPopup.phone.$invalid && orderDetailsPopup.phone.$dirty">Phone Number must contain 10 NUMBERS and is mandatory and should not start with 0. 
+                </div>
+              </div>
+          </div> 
+
+       
+          <div class="col-12" style="margin-bottom: 15px;display: inline-flex;">
+             <div class="col-3">
+                 Total: 
+              </div>
+             <div class="col-9">
+                <input class=" form-control" type="text" name="total" ng-model="newOrder.orderTotal"  placeholder="Enter Total Amount" ng-pattern="/(^[1-9][0-9]*$)/" required>
+                <div style="color: #fe2627 !important; margin-top: 10px; padding: 0px" ng-show="(orderDetailsPopup.total.$invalid && orderDetailsPopup.total.$dirty)">
+                Total Amount is Mandatory and should be numeric!
+             </div>
+             </div>
+          </div>
+          <br>
+          
+        <div style="padding:0px 30px;"><span style="color:#fe2627!important;">All fields are mandatory</span></div>
+        </div>
+        
+        <div class="modal-footer">
+          <div class="row justify-content-end col-12">
+          <div>
+            <a style="float:right;margin-left:5px;" ng-click="orderDetailModalcancel();">
+                  <button class="btn btn-danger align-self-center" style="min-width: 100%;color:#fff !important;text-align: center;">Cancel
+                  </button>
+            </a>
+            <a style="float:right;" ng-click="submitDetails(newOrder);">
+              <button class="btn btn-primary align-self-center" style="min-width:100%;color:#fff !important;text-align: center;" ng-disabled="(orderDetailsPopup.$invalid ||(foundOrderNumber != -1 && editIndex != foundOrderNumber) || invalidTimeStamp)"> Submit
+              </button>
+
+            </a>
+          </div>
+        </div>
+        </div>
+    </div>
+  </form>
+</script> 
+
+<script type="text/ng-template" id="deleteOrder.html">
+  <form>
+  <div class="modal-header">
+      <h3 class="modal-title">Are you sure you want to DELETE this Order!!!</h3>
+      <span style="cursor: pointer" ng-click="deleteOrderCancel()">x</span>
+  </div>
+  
+  <div class="modal-footer">
+      <div class="row justify-content-end col-12">
+      <a style="float:right;margin-right:5px;" ng-click="deleteOrder();">
+            <button class="btn btn-danger align-self-center" style="min-width: 100%;color:#fff !important;text-align: center;">YES
+            </button>
+      </a>
+      <a style="float:right;" ng-click="deleteOrderCancel();">
+        <button class="btn btn-primary align-self-center" style="min-width:100%;color:#fff !important;text-align: center;"> NO
+        </button>
+      </a>
+    </div>
+  </div>
+</form>
+</script> 

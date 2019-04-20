@@ -1,0 +1,137 @@
+    // All app related style SASS should go here
+    // Sass variables
+    @import "variables"; // typography
+    @import "typography"; // Sass functions
+    @import "functions"; // import mixins
+    @import "mixins";
+
+
+
+    /*-----------------------  -----------------------
+Modal Section
+---------------------- ------------------------ */
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+ 
+    /*-----------------------  -----------------------
+Home Section
+---------------------- ------------------------ */
+
+    .logoutIcon {
+      margin-left: 22px;
+      -webkit-margin-start: 0px;
+      -moz-margin-start: 0px;
+      text-align: right;
+      display: inline-block;
+      vertical-align: middle;
+      a {
+        text-decoration: none;
+        svg {
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .logoutStyle {
+      width: 75px;
+      a {
+        text-decoration: none;
+        h4 {
+          font-size: 15px;
+        }
+      }
+    }
+
+    .portalStyle {
+      color: #fff !important;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .userInfoStyle {
+      min-width: 150px;
+      margin-left: 22px;
+      -webkit-margin-start: 0px;
+      -moz-margin-start: 0px;
+      border-right: 1px #ddd solid;
+      margin-right: 15px;
+    }
+
+    .inner-container {
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      border-top: 1px solid #FFAB00;
+      padding: 12px;
+      margin-bottom: 50px;
+      background-color: white;
+      .cancel-btn {
+        border: 1px solid #08c9ac;
+        color: #08c9ac;
+      }
+    }
+
+
+   
+
+
+/*-----------------------  -----------------------
+footer Section
+---------------------- ------------------------ */
+
+.footer {
+  margin-top:10px;
+  font-size: 11px !important;
+  border-top: 1px solid #ddd;
+  h4 {
+    margin: 0px;
+  }
+  a {
+    text-decoration: none;
+  }
+  .lower_footer {
+    padding: 0 0 10px 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+    /*background-color: #f9f9fb;*/
+    color: white !important;
+    a {
+      color: black;
+    }
+
+    .copyright {
+      order: 2;
+      max-width: 550px;
+      text-align: center;
+      h2 {
+        color : black;
+        margin-bottom:10px;
+        margin-top: 10px;
+      }
+      h4 {
+        margin-bottom: 20px;
+        color: black !important;
+      }
+      img {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}

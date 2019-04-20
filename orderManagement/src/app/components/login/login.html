@@ -1,0 +1,36 @@
+<form name = "loginForm" novalidate >
+	<div class= "container" style= "padding-top: 20px">
+		<div class="row justify-content-end form-group">
+			<div class="col-9" style = "display: flex;margin-bottom: 15px;">
+				<div class="col-4">User Name</div>
+				<div class="col-8">
+					<input class="form-control" type="text" placeholder="User Name" value= "username" name="username" ng-model = "login.username" required>
+				</div>
+			</div>
+			<div class="col-9" style = "display: flex;margin-bottom: 15px;">
+				<div class="col-4">Password</div>
+				<div class="col-8">
+					<input type="password" class="form-control" placeholder="Password" name="password" ng-model = "login.password" required autocomplete="on">
+				</div>
+	    </div>
+	    <div class="col-9" style = "display: flex;margin-bottom: 15px;">
+	        <div class="col-4"></div>
+	        <div class="col-6">
+	        	<div class="form-check">
+	      			<input type="checkbox" class="form-check-input">
+	    				<label class="form-check-label" for="rememberMe">Remember Me</label>
+	    			</div>
+	    		</div>
+	    </div>
+	    <div class="col-9" style="margin-bottom: 15px; text-align: center; color:red">
+	    	{{login.displayData}}
+	    </div>
+
+	    <div class="col-9" style = "display: flex;margin-bottom: 15px;">
+	        <div class="col-4"></div>
+	        <div class="col-6"><button class= "btn btn-primary" ng-click = "login.submitLoginDetails()" ng-disabled = "(loginForm.username.$error.required ||loginForm.password.$error.required )"> Login</button></div>
+	    </div>
+
+		</div>
+	</div>
+</form>

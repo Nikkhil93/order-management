@@ -1,0 +1,70 @@
+<div style="box-shadow: -2px 0px 40px 1px #898989, 2px 0px 40px 1px #898989;min-height: 100vh; margin:auto;background-color: #f5fbfb">
+
+  <!-- Header Section-->
+  <header ng-cloak>
+    <nav class="navbar" role="navigation" style="padding:0px;">
+      <div class="container" >
+        <div class="navbar-header">
+          <a ui-sref="home.orderManagement.orderDetails">
+              <img class="navbar-brand logo " src="assets/images/logo.jpg" alt="Logo" style="height: 55px;width: auto;">
+              
+          </a>
+        </div>
+        <div class="pull-right ult_profile">
+          <div class="row justify-content-center">
+            <div class="col align-self-center userInfoStyle">
+              <h4 class="ng-cloak"> Welcome {{userName}}</h4>
+            </div>
+            <div class="align-self-center logoutIcon" ng-if="loginStatus">
+              <a ng-click="home.logout()" href="">
+                <svg fill="#9d9d9d" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" />
+                </svg>
+              </a>
+            </div>
+            <div class="align-self-center logout logoutStyle" ng-if="loginStatus">
+              <a ng-click="home.logout()" href="">
+                <h4 style="color: #9d9d9d !important;">Logout</h4>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </nav>
+    <div class="navbar justify-content-center menu-navigation" style="background: linear-gradient(to right, #133778, #08c9ab) !important;color: #fff !important;padding: 10px;font-size: 28px;border-radius: 0px;">
+      <div class="container secondary-nav">
+        <ul class="nav navbar-nav navbar-left">
+          <li>
+            <a ng-click="main.clicked()" ui-sref="home.orderManagement.orderDetails" style="background:none;">
+              <span class="portalStyle">Order Management</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <!--end: Header Section-->
+  <!-- UI view -->
+  <div style="min-height: calc(100vh - 220px);" ui-view></div>
+  <!-- footer section-->
+  <div class="footer ">
+    <!-- lower footer section -->
+    <div class="lower_footer">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12 align-self-center copyright">
+            <h2>ORDER MANAGEMENT SYSTEM</h2>
+            <!-- <img src="assets/images/TCS_text_logo.svg" alt="Tata Consultancy Services" width="194" height="10"> -->
+            <h4 class="ng-binding">Copyright © {{copyright_year}} Nikhil Kumar (Martian)</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end : lower footer -->
+  </div>
+  <!--end : footer-->
+</div>
+

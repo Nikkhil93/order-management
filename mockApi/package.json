@@ -1,0 +1,18 @@
+{
+  "name": "mock_api",
+  "version": "1.0.0",
+  "description": "Mock API generator",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./app.js"
+  },
+  "author": "Martian",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "nodemon": "^1.17.5"
+  }
+}

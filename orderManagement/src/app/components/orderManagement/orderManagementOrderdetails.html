@@ -1,0 +1,39 @@
+<div class="container">
+  <div>
+    <div class= "row justify-content-end">
+      <input class="btn btn-primary" style="background-color: #0C9297" type="submit" name="addOrder" value="Add Order" ng-click="orderManagement.editOrderDetails('New');">
+    </div>
+    
+      <table class="table table-striped  text-center table-responsive-lg" >
+        <thead>
+          <tr>
+            <th class="text-left form-title"><h2 style="margin :0">Order No</h2></th>
+            <th class="text-left form-title"><h2 style="margin:0">Due Date</h2></th>
+            <th class="text-left form-title"><h2 style="margin:0">Name</h2></th>
+            <th class="text-left form-title"><h2 style="margin:0">Address</h2></th>
+            <th class="text-left form-title"><h2 style="margin:0">Phone</h2></th>
+            <th class="text-left form-title"><h2 style="margin:0">Total</h2></th>
+            <th class="text-left form-title"></th>
+            <th class="text-left form-title"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="order in orderManagement.orderDetails">
+            <td class="text-left">{{order.orderNumber}}</td>
+            <td class="text-left" style="max-width: 300px;word-wrap: break-word;"><b>{{order.orderDueDate}}</b></td>
+            <td class="text-left" style="max-width: 300px;word-wrap: break-word;"><b>{{order.buyerName}}</b></td>
+            <td class="text-left" style="max-width: 300px;word-wrap: break-word;"><b>{{order.customerAddress}}</b></td>
+            <td class="text-left" style="max-width: 300px;word-wrap: break-word;"><b>{{order.customerPhone}}</b></td>
+            <td class="text-left" style="max-width: 300px;word-wrap: break-word;"><b>{{order.orderTotal}}</b></td>
+            <td class="text-left">
+              <button class="btn btn-primary" style="background-color:#0C9297; " ng-click="  orderManagement.editOrderDetails(order, $index); ">Edit</button>
+            </td>
+            <td class="text-left">
+              <button class="btn btn-danger" ng-click="  orderManagement.setDeleteIndex($index); orderManagement.deleteOrderModal();">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+  </div>
+</div>

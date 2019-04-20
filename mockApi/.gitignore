@@ -1,0 +1,6 @@
+# compiled output
+/_build
+
+# dependencies
+/node_modules
+/src/bower_components
